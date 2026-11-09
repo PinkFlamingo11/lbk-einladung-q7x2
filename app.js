@@ -47,6 +47,7 @@ function show(name) {
   $$('.screen').forEach(s => { s.hidden = s.id !== 's-' + name; });
   const compact = ['form', 'rules', 'done'].includes(name);
   stage.classList.toggle('compact', compact);
+  stage.classList.remove('has-photo', 'shock');
   stage.hidden = name === 'game';
   if (name !== 'story') showKobes();
   window.scrollTo(0, 0);
@@ -72,15 +73,18 @@ let typing = null;
 
 function buildBeats() {
   const b = [];
-  b.push({ t: 'Setz dich. Ich bin der Köbes. Bei mir gibt es keine Karte, nur Kölsch, bis du den Deckel aufs Glas legst. Aber erst hörst du zu.' });
+  b.push({ t: 'Na, du! Ich bin der Köbes. Bei mir gibt es Kölsch, bis du den Deckel aufs Glas legst. Aber erst hörst du zu.' });
   b.push({ t: 'Ich erzähl dir von Carolin. Du kennst sie als Caro.' });
-  b.push({ t: 'Es war der 5. Dezember 1999. Ein Sonntag, einen Tag vor Nikolaus. Seitdem hat sie zwei Tage hintereinander Bescherung. Behauptet sie.' });
+  b.push({ t: 'Alles fing am 5. Dezember 1999 im Saarland an. Ein Sonntag, einen Tag vor Nikolaus. Seitdem hat sie zwei Tage hintereinander Bescherung. Behauptet sie.' });
   PHOTOS.forEach((p, i) => b.push({ t: p.caption, photo: p.src }));
-  b.push({ t: 'Irgendwann hat es sie nach Köln verschlagen. Und Köln hat sie behalten. Mit Dom, Rhein, Kölsch und zu vielen Abenden im Belgischen Viertel.' });
-  b.push({ t: 'Jetzt kommt der Teil, bei dem ich das Tablett absetzen muss.' });
-  b.push({ t: 'Caro geht nach Zürich. Für die Doktorarbeit. Neue Stadt, neues Leben, neue Preise.' });
+  b.push({ t: 'Hauptsach gudd gess, hat man ihr im Saarland beigebracht. Das hat sie nie vergessen.' });
+  b.push({ t: 'Für den Master kam sie dann nach Köln. Und ich sag dir: So schnell kommt man hier nicht mehr weg.' });
+  b.push({ t: 'Zwischendurch war sie in München und in Frankfurt. Aber Köln hat sie immer wieder zurückgeholt. Wie ein Kölsch, das man nicht stehen lassen kann.' });
+  b.push({ t: 'Jetzt kommt der Teil, bei dem ich das Tablett absetzen muss. Halt dich fest.' });
+  b.push({ t: 'Caro zieht weiter. Nach Zürich!', shock: true });
+  b.push({ t: 'Für die Doktorarbeit. Neue Stadt, neues Leben, neue Preise.' });
   b.push({ t: 'Weißt du, was ein Bier in Zürich kostet? Ich auch nicht. Ich hab aufgehört zu googeln. Mir wurde schlecht.' });
-  b.push({ t: 'Darum: Sie wird 27. Und es ist ihr letzter Geburtstag in Köln. Danach heißt es nicht mehr Prost, sondern Grüezi.' });
+  b.push({ t: 'Darum: Sie wird 27, und das ist ihr letzter Geburtstag in Köln. Danach heißt es nicht mehr Prost, sondern Grüezi.' });
   b.push({ t: 'Samstag, 5. Dezember, 20 Uhr. Bring gute Laune und Durst.', info: true });
   return b;
 }
@@ -114,6 +118,9 @@ function renderBeat() {
   const el = $('#bubble-text');
   $('#progress').style.width = ((beatIndex + 1) / beats.length * 100) + '%';
   if (beat.photo) showPhoto(beat.photo); else showKobes();
+  stage.classList.toggle('has-photo', !!beat.photo);
+  stage.classList.remove('shock');
+  if (beat.shock) { void stage.offsetWidth; stage.classList.add('shock'); }
   $('#infocard').hidden = !beat.info;
   const last = beatIndex === beats.length - 1;
   $('#next').textContent = last ? 'Ich sag Bescheid' : 'Weiter';

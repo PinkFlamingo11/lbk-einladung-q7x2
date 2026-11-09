@@ -14,22 +14,47 @@ const stat = s => s === 'yes' ? 'Kommt' : s === 'maybe' ? 'Vielleicht' : 'Absage
 const slotLabel = v => (SLOTS.find(s => s[0] === v) || [, v || ''])[1];
 const fmt = iso => new Date(iso).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
 
-async function login(mail, pass) {
-  const r = await fetch(`${C.SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+const RTOK = 'lbk_admin_refresh';
+const store = { get: k => localStorage.getItem(k), set: (k, v) => localStorage.setItem(k, v), del: k => localStorage.removeItem(k) };
+
+// Login ohne Passwort: Link per Mail. Beim Rückweg stehen die Tokens im URL-Hash.
+async function sendLink(mail) {
+  const redirect = encodeURIComponent(location.origin + location.pathname);
+  const r = await fetch(`${C.SUPABASE_URL}/auth/v1/otp?redirect_to=${redirect}`, {
     method: 'POST', headers: { apikey: C.SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: mail, password: pass })
+    body: JSON.stringify({ email: mail, create_user: true })
   });
-  if (!r.ok) throw new Error('Login fehlgeschlagen');
+  if (!r.ok) throw new Error('Link konnte nicht gesendet werden');
+}
+function takeHashTokens() {
+  if (!location.hash.includes('access_token=')) return false;
+  const p = new URLSearchParams(location.hash.slice(1));
+  if (p.get('access_token')) store.set(TOK, p.get('access_token'));
+  if (p.get('refresh_token')) store.set(RTOK, p.get('refresh_token'));
+  history.replaceState(null, '', location.pathname);
+  return true;
+}
+async function refresh() {
+  const rt = store.get(RTOK);
+  if (!rt) return false;
+  const r = await fetch(`${C.SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`, {
+    method: 'POST', headers: { apikey: C.SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ refresh_token: rt })
+  });
+  if (!r.ok) return false;
   const j = await r.json();
-  sessionStorage.setItem(TOK, j.access_token);
+  store.set(TOK, j.access_token); store.set(RTOK, j.refresh_token);
+  return true;
 }
 
 async function fetchRows() {
   if (DEMO) return JSON.parse(localStorage.getItem('lbk_demo_rows_v1') || '[]');
-  const r = await fetch(`${C.SUPABASE_URL}/rest/v1/rsvps?select=*&order=created_at.asc`, {
-    headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + sessionStorage.getItem(TOK) }
+  const get = () => fetch(`${C.SUPABASE_URL}/rest/v1/rsvps?select=*&order=created_at.asc`, {
+    headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + store.get(TOK) }
   });
-  if (r.status === 401 || r.status === 403) { sessionStorage.removeItem(TOK); throw new Error('auth'); }
+  let r = await get();
+  if ((r.status === 401 || r.status === 403) && await refresh()) r = await get();
+  if (r.status === 401 || r.status === 403) { store.del(TOK); store.del(RTOK); throw new Error('auth'); }
   if (!r.ok) throw new Error(await r.text());
   return r.json();
 }
@@ -101,12 +126,12 @@ async function load() {
 }
 
 $('#login').addEventListener('submit', async e => {
-  e.preventDefault(); $('#l-err').hidden = true;
-  try { await login($('#l-mail').value.trim(), $('#l-pass').value); await load(); }
-  catch (ex) { $('#l-err').textContent = 'Login hat nicht geklappt.'; $('#l-err').hidden = false; }
+  e.preventDefault(); $('#l-err').hidden = true; $('#l-ok').hidden = true;
+  try { await sendLink($('#l-mail').value.trim()); $('#l-ok').hidden = false; }
+  catch (ex) { $('#l-err').textContent = 'Das hat nicht geklappt. Warte kurz und versuch es nochmal.'; $('#l-err').hidden = false; }
 });
 $('#reload').addEventListener('click', load);
-$('#logout').addEventListener('click', () => { sessionStorage.removeItem(TOK); location.reload(); });
+$('#logout').addEventListener('click', () => { store.del(TOK); store.del(RTOK); location.reload(); });
 $('#csv').addEventListener('click', () => {
   const rows = window.__rows || [];
   const head = ['Name', 'Status', 'Personen', 'Ankunft', 'Wert', 'Glaeser', 'Nachricht', 'Eingang'];
@@ -117,5 +142,6 @@ $('#csv').addEventListener('click', () => {
   a.download = 'zusagen.csv'; a.click();
 });
 
-if (DEMO) load(); else if (sessionStorage.getItem(TOK)) load(); else { $('#login').hidden = false; }
+takeHashTokens();
+if (DEMO) load(); else if (store.get(TOK) || store.get(RTOK)) load(); else { $('#login').hidden = false; }
 })();

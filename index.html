@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#F3EAD7">
+<meta name="theme-color" content="#FFE4EC">
 <title>Last Birthday in Köln</title>
+<meta property="og:title" content="Last Birthday in Köln">
+<meta property="og:description" content="Carolin wird 27. Der Köbes lädt ein.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,52 +26,81 @@
   <div id="stage" class="stage">
     <div id="stage-kobes">
       <svg id="kobes" viewBox="0 0 260 260" role="img" aria-label="Der Köbes">
-        <!-- linker Arm -->
-        <polygon fill="#2447A8" points="62,168 38,192 42,226 64,222 72,190"/>
-        <polygon fill="#E9B58F" points="40,224 66,220 64,236 42,240"/>
-        <!-- Torso -->
-        <polygon fill="#2447A8" points="55,260 62,168 110,150 150,150 198,168 205,260"/>
-        <polygon fill="#F3EAD7" points="112,150 130,178 148,150"/>
-        <polygon fill="#14234F" points="82,260 90,192 170,192 178,260"/>
-        <polygon fill="#14234F" points="104,192 112,172 148,172 156,192"/>
-        <line x1="104" y1="226" x2="156" y2="226" stroke="#F3EAD7" stroke-opacity=".35" stroke-width="1"/>
-        <!-- rechter Arm mit Kölsch-Kranz -->
-        <polygon fill="#2447A8" points="198,168 224,176 230,208 210,212 200,190"/>
-        <rect x="214" y="208" width="18" height="12" fill="#E9B58F"/>
-        <rect x="223" y="164" width="2" height="48" fill="#14234F"/>
-        <polygon fill="#B9B2A3" points="188,214 254,214 250,222 192,222"/>
-        <g>
-          <rect x="192" y="186" width="9" height="28" fill="#E3A21A"/><rect x="192" y="182" width="9" height="5" fill="#FBF5E6"/>
-          <rect x="203" y="186" width="9" height="28" fill="#E3A21A"/><rect x="203" y="182" width="9" height="5" fill="#FBF5E6"/>
-          <rect x="213" y="186" width="9" height="28" fill="#E3A21A"/><rect x="213" y="182" width="9" height="5" fill="#FBF5E6"/>
-          <rect x="226" y="186" width="9" height="28" fill="#E3A21A"/><rect x="226" y="182" width="9" height="5" fill="#FBF5E6"/>
-          <rect x="237" y="186" width="9" height="28" fill="#E3A21A"/><rect x="237" y="182" width="9" height="5" fill="#FBF5E6"/>
+        <g stroke="#3B1E2C" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <!-- Funkeln -->
+          <path class="spark" d="M44 58 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="#F7B93B" stroke="none"/>
+          <path class="spark s2" d="M216 38 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#F2639A" stroke="none"/>
+          <path class="spark s3" d="M28 138 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#C7A8F0" stroke="none"/>
+
+          <!-- Hals -->
+          <rect x="116" y="138" width="28" height="28" rx="8" fill="#FFD9BF"/>
+
+          <!-- linker Arm -->
+          <path d="M70 176 Q40 190 44 228 L68 226 Q68 200 86 188 Z" fill="#5A7BE0"/>
+          <circle cx="56" cy="232" r="12" fill="#FFD9BF"/>
+
+          <!-- Torso -->
+          <path d="M56 262 Q54 180 104 164 L156 164 Q206 180 204 262 Z" fill="#5A7BE0"/>
+          <!-- Schürze -->
+          <path d="M88 262 L92 198 Q130 186 168 198 L172 262 Z" fill="#FFF8FB"/>
+          <path d="M130 238 C106 222 116 206 130 218 C144 206 154 222 130 238 Z" fill="#F2639A" stroke-width="2"/>
+          <!-- Schleife -->
+          <path d="M130 172 L106 160 L106 184 Z" fill="#F2639A"/>
+          <path d="M130 172 L154 160 L154 184 Z" fill="#F2639A"/>
+          <circle cx="130" cy="172" r="7" fill="#E0305F"/>
+
+          <!-- rechter Arm mit Kölsch-Kranz -->
+          <path d="M196 178 Q228 186 228 218 L204 220 Q204 200 190 192 Z" fill="#5A7BE0"/>
+          <g stroke-width="1.8">
+            <rect x="186" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="186" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="199" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="199" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="212" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="212" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="225" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="225" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="238" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="238" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+          </g>
+          <rect x="182" y="220" width="72" height="9" rx="4.5" fill="#E3D3FA"/>
+          <path d="M218 184 C208 176 212 168 218 173 C224 168 228 176 218 184 Z" fill="#F2639A" stroke-width="1.6"/>
+          <circle cx="212" cy="230" r="11" fill="#FFD9BF"/>
+
+          <!-- Ohren -->
+          <circle cx="78" cy="104" r="10" fill="#FFD9BF"/>
+          <circle cx="182" cy="104" r="10" fill="#FFD9BF"/>
+          <!-- Kopf -->
+          <ellipse cx="130" cy="100" rx="54" ry="50" fill="#FFD9BF"/>
+          <!-- Haare -->
+          <path d="M77 98 Q68 52 118 46 Q152 36 174 62 Q192 78 183 100 Q172 74 130 72 Q94 72 77 98 Z" fill="#B8AEDB"/>
+          <path d="M120 46 Q126 28 142 38 Q136 48 128 52" fill="#B8AEDB"/>
         </g>
-        <!-- Hals, Ohren, Kopf -->
-        <rect fill="#D99E78" x="116" y="128" width="28" height="26"/>
-        <polygon fill="#D99E78" points="87,88 77,100 88,114"/>
-        <polygon fill="#D99E78" points="173,88 183,100 172,114"/>
-        <polygon fill="#E9B58F" points="92,62 168,62 176,98 158,146 102,146 84,98"/>
-        <polygon fill="#8C8A86" points="90,68 130,38 170,68 166,78 150,70 130,62 110,70 94,78"/>
-        <polygon fill="#5B5854" points="100,86 123,90 123,96 100,93"/>
-        <polygon fill="#5B5854" points="160,86 137,90 137,96 160,93"/>
-        <rect class="eye" x="107" y="99" width="9" height="5" fill="#1A1713"/>
-        <rect class="eye" x="144" y="99" width="9" height="5" fill="#1A1713"/>
-        <polygon fill="#D99E78" points="130,100 139,121 121,121"/>
-        <rect class="mouth" x="119" y="138" width="22" height="6" fill="#7A2E2A"/>
-        <polygon fill="#6E6B66" points="98,128 130,118 162,128 150,138 130,130 110,138"/>
+        <!-- Gesicht -->
+        <g stroke="#3B1E2C" stroke-linecap="round" fill="none">
+          <path d="M98 90 Q108 84 118 90" stroke-width="3"/>
+          <path d="M142 90 Q152 84 162 90" stroke-width="3"/>
+        </g>
+        <g class="eyes">
+          <ellipse class="eye" cx="108" cy="104" rx="6.5" ry="8.5" fill="#3B1E2C"/>
+          <ellipse class="eye" cx="152" cy="104" rx="6.5" ry="8.5" fill="#3B1E2C"/>
+          <circle cx="110.5" cy="100" r="2.4" fill="#fff"/>
+          <circle cx="154.5" cy="100" r="2.4" fill="#fff"/>
+          <circle cx="106" cy="108" r="1.3" fill="#fff"/>
+          <circle cx="150" cy="108" r="1.3" fill="#fff"/>
+        </g>
+        <ellipse cx="94" cy="120" rx="10" ry="6.5" fill="#FF9FB8"/>
+        <ellipse cx="166" cy="120" rx="10" ry="6.5" fill="#FF9FB8"/>
+        <circle cx="130" cy="114" r="5" fill="#F4B493"/>
+        <ellipse class="mouth" cx="130" cy="138" rx="7" ry="3.2" fill="#C9455F"/>
+        <path d="M130 124 Q118 112 104 119 Q98 127 110 131 Q124 131 130 127 Q136 131 150 131 Q162 127 156 119 Q142 112 130 124 Z" fill="#B8AEDB" stroke="#3B1E2C" stroke-width="2.2" stroke-linejoin="round"/>
       </svg>
     </div>
     <figure id="stage-photo" class="photo" hidden>
-      <img id="photo-img" alt="">
+      <img id="photo-img" alt="Die kleine Caro mit einem Luftballon">
     </figure>
   </div>
 
   <!-- INTRO -->
   <section id="s-intro" class="screen" hidden>
-    <h1 class="title">Last Birthday<br>in Köln</h1>
-    <p class="lede">Carolin wird 27. Danach geht es nach Zürich. Der Köbes erklärt dir den Rest.</p>
-    <button class="btn btn-main" data-go="story">Eintreten</button>
+    <h1 class="title">Last Birthday in <em>Köln</em></h1>
+    <p class="lede">Carolin wird 27 &#9825; Der Köbes erzählt dir, warum dieser Geburtstag etwas Besonderes ist.</p>
+    <button class="btn btn-main" data-go="story">Komm rein</button>
   </section>
 
   <!-- STORY -->
@@ -150,21 +181,22 @@
     </div>
     <div class="glass-wrap" id="glass-wrap">
       <svg id="glass" viewBox="-40 -40 240 390" aria-hidden="true">
-        <defs><clipPath id="gclip"><polygon points="42,10 118,10 110,330 50,330"/></clipPath></defs>
+        <defs><clipPath id="gclip"><path d="M42 10 H118 L110 322 Q109 330 101 330 H59 Q51 330 50 322 Z"/></clipPath></defs>
         <!-- Zapfhahn -->
-        <polygon points="64,-40 96,-40 96,-22 86,-22 86,-14 74,-14 74,-22 64,-22" fill="#14234F"/>
-        <rect id="stream" x="76" y="-14" width="8" height="0" fill="#E3A21A"/>
+        <rect x="62" y="-40" width="36" height="20" rx="6" fill="#3B1E2C"/>
+        <rect x="74" y="-22" width="12" height="9" rx="3" fill="#3B1E2C"/>
+        <rect id="stream" x="76" y="-14" width="8" height="0" fill="#F7B93B"/>
         <g clip-path="url(#gclip)">
-          <rect x="0" y="10" width="160" height="320" fill="#FFFFFF" fill-opacity=".4"/>
-          <rect id="liq" x="0" y="330" width="160" height="0" fill="#E3A21A"/>
+          <rect x="0" y="10" width="160" height="320" fill="#FFFFFF" fill-opacity=".55"/>
+          <rect id="liq" x="0" y="330" width="160" height="0" fill="#F7B93B"/>
           <rect id="foam" x="0" y="330" width="160" height="0" fill="#FFFFFF"/>
         </g>
-        <polygon points="42,10 118,10 110,330 50,330" fill="none" stroke="#1A1713" stroke-width="3" stroke-linejoin="miter"/>
+        <path d="M42 10 H118 L110 322 Q109 330 101 330 H59 Q51 330 50 322 Z" fill="none" stroke="#3B1E2C" stroke-width="3.5" stroke-linejoin="round"/>
         <g id="mark">
-          <line id="mark-line" x1="-38" x2="132" y1="0" y2="0" stroke="#C4161C" stroke-width="3"/>
-          <text id="mark-text" x="-38" y="-6" font-size="11" fill="#C4161C" font-family="Work Sans, sans-serif" font-weight="600">Eichstrich</text>
+          <line id="mark-line" x1="-38" x2="132" y1="0" y2="0" stroke="#E0305F" stroke-width="3" stroke-linecap="round"/>
+          <text id="mark-text" x="-38" y="-6" font-size="12" fill="#E0305F" font-family="Fredoka, sans-serif" font-weight="600">Eichstrich</text>
         </g>
-        <line id="hit" x1="36" x2="124" y1="0" y2="0" stroke="#1A1713" stroke-width="2" stroke-dasharray="4 3" opacity="0"/>
+        <line id="hit" x1="36" x2="124" y1="0" y2="0" stroke="#3B1E2C" stroke-width="2" stroke-dasharray="4 3" opacity="0"/>
       </svg>
     </div>
     <p class="game-note" id="game-note"></p>
