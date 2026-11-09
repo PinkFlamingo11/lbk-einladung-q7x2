@@ -1,0 +1,86 @@
+<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:630px;overflow:hidden;background-color:#FFE4EC;background-image:radial-gradient(rgba(242,99,154,.25) 3px,transparent 3.3px);background-size:40px 40px;font-family:Fredoka,sans-serif;color:#3B1E2C;position:relative}
+.k{position:absolute;left:20px;bottom:-20px;width:560px;height:560px}
+.k svg{width:100%;height:100%}
+.t{position:absolute;left:610px;top:238px;width:560px}
+.t h1{font-size:68px;line-height:1.02;font-weight:700;letter-spacing:-.01em}
+.t h1 em{font-style:normal;color:#F2639A}
+.t p{margin-top:20px;font-family:Nunito,sans-serif;font-weight:800;font-size:32px;color:#3B1E2C}
+.b{position:absolute}
+.b .ball{width:100%;height:100%;border:5px solid #3B1E2C;border-radius:50% 50% 48% 48%/55% 55% 45% 45%}
+.b .str{position:absolute;left:50%;top:100%;width:3px;height:36px;background:#3B1E2C;transform:translateX(-50%)}
+.b span{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:64px;color:#fff}
+</style></head><body>
+<div class="b" style="left:640px;top:36px;width:120px;height:140px"><div class="ball" style="background:#F2639A"></div><div class="str"></div><span>27</span></div>
+<div class="b" style="left:790px;top:20px;width:100px;height:120px"><div class="ball" style="background:#F7B93B"></div><div class="str"></div></div>
+<div class="b" style="left:920px;top:50px;width:110px;height:130px"><div class="ball" style="background:#C7A8F0"></div><div class="str"></div></div>
+<div class="b" style="left:1060px;top:24px;width:90px;height:108px"><div class="ball" style="background:#FFB3CD"></div><div class="str"></div></div>
+<div class="k"><svg id="kobes" style="overflow:visible" viewBox="0 0 260 260" role="img" aria-label="Der Köbes">
+        <g stroke="#3B1E2C" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <!-- Funkeln -->
+          <path class="spark" d="M44 58 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="#F7B93B" stroke="none"/>
+          <path class="spark s2" d="M216 38 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#F2639A" stroke="none"/>
+          <path class="spark s3" d="M28 138 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#C7A8F0" stroke="none"/>
+
+          <!-- Hals -->
+          <rect x="116" y="138" width="28" height="28" rx="8" fill="#FFD9BF"/>
+
+          <!-- linker Arm -->
+          <path d="M70 176 Q40 190 44 228 L68 226 Q68 200 86 188 Z" fill="#5A7BE0"/>
+          <circle cx="56" cy="232" r="12" fill="#FFD9BF"/>
+
+          <!-- Torso -->
+          <path d="M56 262 Q54 180 104 164 L156 164 Q206 180 204 262 Z" fill="#5A7BE0"/>
+          <!-- Schürze -->
+          <path d="M88 262 L92 198 Q130 186 168 198 L172 262 Z" fill="#FFF8FB"/>
+          <path d="M130 238 C106 222 116 206 130 218 C144 206 154 222 130 238 Z" fill="#F2639A" stroke-width="2"/>
+          <!-- Schleife -->
+          <path d="M130 172 L106 160 L106 184 Z" fill="#F2639A"/>
+          <path d="M130 172 L154 160 L154 184 Z" fill="#F2639A"/>
+          <circle cx="130" cy="172" r="7" fill="#E0305F"/>
+
+          <!-- rechter Arm mit Kölsch-Kranz -->
+          <path d="M196 178 Q228 186 228 218 L204 220 Q204 200 190 192 Z" fill="#5A7BE0"/>
+          <g stroke-width="1.8">
+            <rect x="186" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="186" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="199" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="199" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="212" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="212" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="225" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="225" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+            <rect x="238" y="192" width="11" height="28" rx="3" fill="#F7B93B"/><rect x="238" y="192" width="11" height="6" rx="3" fill="#FFF8FB"/>
+          </g>
+          <rect x="182" y="220" width="72" height="9" rx="4.5" fill="#E3D3FA"/>
+          <path d="M218 184 C208 176 212 168 218 173 C224 168 228 176 218 184 Z" fill="#F2639A" stroke-width="1.6"/>
+          <circle cx="212" cy="230" r="11" fill="#FFD9BF"/>
+
+          <!-- Ohren -->
+          <circle cx="78" cy="104" r="10" fill="#FFD9BF"/>
+          <circle cx="182" cy="104" r="10" fill="#FFD9BF"/>
+          <!-- Kopf -->
+          <ellipse cx="130" cy="100" rx="54" ry="50" fill="#FFD9BF"/>
+          <!-- Haare -->
+          <path d="M77 98 Q68 52 118 46 Q152 36 174 62 Q192 78 183 100 Q172 74 130 72 Q94 72 77 98 Z" fill="#B8AEDB"/>
+          <path d="M120 46 Q126 28 142 38 Q136 48 128 52" fill="#B8AEDB"/>
+        </g>
+        <!-- Gesicht -->
+        <g stroke="#3B1E2C" stroke-linecap="round" fill="none">
+          <path d="M98 90 Q108 84 118 90" stroke-width="3"/>
+          <path d="M142 90 Q152 84 162 90" stroke-width="3"/>
+        </g>
+        <g class="eyes">
+          <ellipse class="eye" cx="108" cy="104" rx="6.5" ry="8.5" fill="#3B1E2C"/>
+          <ellipse class="eye" cx="152" cy="104" rx="6.5" ry="8.5" fill="#3B1E2C"/>
+          <circle cx="110.5" cy="100" r="2.4" fill="#fff"/>
+          <circle cx="154.5" cy="100" r="2.4" fill="#fff"/>
+          <circle cx="106" cy="108" r="1.3" fill="#fff"/>
+          <circle cx="150" cy="108" r="1.3" fill="#fff"/>
+        </g>
+        <ellipse cx="94" cy="120" rx="10" ry="6.5" fill="#FF9FB8"/>
+        <ellipse cx="166" cy="120" rx="10" ry="6.5" fill="#FF9FB8"/>
+        <circle cx="130" cy="114" r="5" fill="#F4B493"/>
+        <ellipse class="mouth" cx="130" cy="138" rx="7" ry="3.2" fill="#C9455F"/>
+        <path d="M130 124 Q118 112 104 119 Q98 127 110 131 Q124 131 130 127 Q136 131 150 131 Q162 127 156 119 Q142 112 130 124 Z" fill="#B8AEDB" stroke="#3B1E2C" stroke-width="2.2" stroke-linejoin="round"/>
+      <g stroke="#3B1E2C" stroke-width="2.5" stroke-linejoin="round"><polygon points="98,58 130,-6 162,58" fill="#F2639A"/><circle cx="122" cy="34" r="4" fill="#FFF8FB" stroke="none"/><circle cx="138" cy="24" r="4" fill="#F7B93B" stroke="none"/><circle cx="130" cy="46" r="4" fill="#FFF8FB" stroke="none"/><circle cx="130" cy="-8" r="9" fill="#F7B93B"/></g></svg></div>
+<div class="t"><h1>You're happily invited <em>to my birthday</em></h1><p>Caro turns 27 &#9825; 5.12.2026</p></div>
+</body></html>

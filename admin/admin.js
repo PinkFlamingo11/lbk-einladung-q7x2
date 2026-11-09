@@ -105,11 +105,20 @@ function render(rows) {
     `<div class="rank"><span>${i + 1}.</span><span>${esc(r.name)}${i === 0 ? ' &#9733;' : ''}<br><small>${(r.glasses || []).join(' / ')}</small></span><strong>${r.score}</strong></div>`).join('')
     : '<p class="sub">Noch niemand hat gezapft.</p>';
 
-  // Tabelle
-  $('#tbl').innerHTML = `<thead><tr><th>Name</th><th>Status</th><th class="num">Pers.</th><th>Ankunft</th><th class="num">Wert</th><th>Nachricht</th><th>Eingang</th></tr></thead><tbody>` +
-    rows.slice().reverse().map(r => `<tr>
-      <td>${esc(r.name)}</td><td class="tag-${r.status}">${stat(r.status)}</td><td class="num">${r.status === 'no' ? '' : r.guests}</td>
-      <td>${esc(slotLabel(r.arrival))}</td><td class="num">${r.score ?? ''}</td><td>${esc(r.note || '')}</td><td>${fmt(r.created_at)}</td></tr>`).join('') + '</tbody>';
+  // Gästeliste: jede Zeile, wer kommt und welche Punkte
+  const rankOf = new Map(rank.map((r, i) => [r.id, i + 1]));
+  const lastId = new Map(cur.map(r => [r.name.trim().toLowerCase(), r.id]));
+  const so = { yes: 0, maybe: 1, no: 2 };
+  const ai = v => { const i = SLOTS.findIndex(s => s[0] === v); return i < 0 ? 99 : i; };
+  const list = rows.slice().sort((a, b) => (so[a.status] - so[b.status]) || (ai(a.arrival) - ai(b.arrival)) || a.name.localeCompare(b.name, 'de'));
+  $('#tbl').innerHTML = `<thead><tr><th>Name</th><th>Status</th><th class="num">Pers.</th><th>Ankunft</th><th class="num">Punkte</th><th class="hide-s">Gläser</th><th class="num">Rang</th><th>Nachricht</th></tr></thead><tbody>` +
+    list.map(r => {
+      const old = lastId.get(r.name.trim().toLowerCase()) !== r.id;
+      const pts = r.status === 'no' ? '' : (r.score != null ? r.score : '<span class="sub">noch nicht gespielt</span>');
+      return `<tr class="${old ? 'old' : ''}"><td><b>${esc(r.name)}</b></td><td class="tag-${r.status}">${stat(r.status)}</td><td class="num">${r.status === 'no' ? '' : r.guests}</td>` +
+        `<td>${esc(slotLabel(r.arrival))}</td><td class="num pt">${pts}</td><td class="gl hide-s">${(r.glasses || []).join(' / ')}</td>` +
+        `<td class="num">${rankOf.get(r.id) ? rankOf.get(r.id) + '.' : ''}</td><td>${esc(r.note || '')}</td></tr>`;
+    }).join('') + '</tbody>';
   window.__rows = rows;
 }
 

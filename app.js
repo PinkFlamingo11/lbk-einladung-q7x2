@@ -73,19 +73,19 @@ let typing = null;
 
 function buildBeats() {
   const b = [];
-  b.push({ t: 'Na, du! Ich bin der Köbes. Bei mir gibt es Kölsch, bis du den Deckel aufs Glas legst. Aber erst hörst du zu.' });
-  b.push({ t: 'Ich erzähl dir von Carolin. Du kennst sie als Caro.' });
-  b.push({ t: 'Alles fing am 5. Dezember 1999 im Saarland an. Ein Sonntag, einen Tag vor Nikolaus. Seitdem hat sie zwei Tage hintereinander Bescherung. Behauptet sie.' });
+  b.push({ t: 'Na, du! Ich bin der Köbes. Bei mir gibt es Kölsch, bis du den Deckel aufs Glas legst. Und ja, ich bin immer so charmant.' });
+  b.push({ t: 'Ich erzähl dir jetzt von Carolin. Du kennst sie als Caro. Ich kenne sie als die, die immer "nur noch eins" sagt.' });
+  b.push({ t: 'Alles fing am 5. Dezember 1999 im Saarland an. Ein Sonntag, einen Tag vor Nikolaus. Seitdem hat sie zwei Tage Bescherung am Stück. Behauptet sie.' });
   PHOTOS.forEach((p, i) => b.push({ t: p.caption, photo: p.src }));
-  b.push({ t: 'Hauptsach gudd gess, hat man ihr im Saarland beigebracht. Das hat sie nie vergessen.' });
-  b.push({ t: 'Für den Master kam sie dann nach Köln. Und ich sag dir: So schnell kommt man hier nicht mehr weg.' });
-  b.push({ t: 'Zwischendurch war sie in München und in Frankfurt. Aber Köln hat sie immer wieder zurückgeholt. Wie ein Kölsch, das man nicht stehen lassen kann.' });
-  b.push({ t: 'Jetzt kommt der Teil, bei dem ich das Tablett absetzen muss. Halt dich fest.' });
+  b.push({ t: 'Im Saarland lernt man früh: Hauptsach gudd gess. Darin hat sie bis heute einen verdammt zuverlässigen Instinkt.' });
+  b.push({ t: 'Für den Master kam sie nach Köln. Ich hab sofort gesagt: Die kommt zum Studieren und bleibt zum Kölsch.' });
+  b.push({ t: 'Zwischendurch war sie in München und in Frankfurt. Ich war nicht beleidigt. Okay, ein bisschen. Aber Köln hat sie zurückgeholt, wie ein Kölsch, das man nicht stehen lassen kann.' });
+  b.push({ t: 'Und jetzt? Stell dein Glas ab. Ich stell auch mein Tablett ab. Halt dich fest.' });
   b.push({ t: 'Caro zieht weiter. Nach Zürich!', shock: true });
-  b.push({ t: 'Für die Doktorarbeit. Neue Stadt, neues Leben, neue Preise.' });
-  b.push({ t: 'Weißt du, was ein Bier in Zürich kostet? Ich auch nicht. Ich hab aufgehört zu googeln. Mir wurde schlecht.' });
-  b.push({ t: 'Darum: Sie wird 27, und das ist ihr letzter Geburtstag in Köln. Danach heißt es nicht mehr Prost, sondern Grüezi.' });
-  b.push({ t: 'Samstag, 5. Dezember, 20 Uhr. Bring gute Laune und Durst.', info: true });
+  b.push({ t: 'Ja, in die Schweiz. Für die Doktorarbeit. Neue Stadt, neues Leben, neue Preise.' });
+  b.push({ t: 'Weißt du, was ein Bier in Zürich kostet? Ich hab nachgerechnet und mich kurz hingesetzt. Da zahlst du für eins, was bei mir ein ganzer Kranz kostet.' });
+  b.push({ t: 'Deshalb ist das ihr letzter Geburtstag in Köln. Sie wird 27 und will ihn mit dir feiern. Danach heißt es nicht mehr Prost, sondern Grüezi.' });
+  b.push({ t: 'Samstag, 5. Dezember, 20 Uhr. Bring gute Laune und Durst. Ich bring das Kölsch und meine Laune. Die ist konstant.', info: true });
   return b;
 }
 
