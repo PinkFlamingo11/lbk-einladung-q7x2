@@ -73,19 +73,14 @@ let typing = null;
 
 function buildBeats() {
   const b = [];
-  b.push({ t: 'Na, du! Ich bin der Köbes. Bei mir gibt es Kölsch, bis du den Deckel aufs Glas legst. Und ja, ich bin immer so charmant.' });
-  b.push({ t: 'Ich erzähl dir jetzt von Carolin. Du kennst sie als Caro. Ich kenne sie als die, die immer "nur noch eins" sagt.' });
-  b.push({ t: 'Alles fing am 5. Dezember 1999 im Saarland an. Ein Sonntag, einen Tag vor Nikolaus. Seitdem hat sie zwei Tage Bescherung am Stück. Behauptet sie.' });
-  PHOTOS.forEach((p, i) => b.push({ t: p.caption, photo: p.src }));
-  b.push({ t: 'Im Saarland lernt man früh: Hauptsach gudd gess. Darin hat sie bis heute einen verdammt zuverlässigen Instinkt.' });
-  b.push({ t: 'Für den Master kam sie nach Köln. Ich hab sofort gesagt: Die kommt zum Studieren und bleibt zum Kölsch.' });
-  b.push({ t: 'Zwischendurch war sie in München und in Frankfurt. Ich war nicht beleidigt. Okay, ein bisschen. Aber Köln hat sie zurückgeholt, wie ein Kölsch, das man nicht stehen lassen kann.' });
-  b.push({ t: 'Und jetzt? Stell dein Glas ab. Ich stell auch mein Tablett ab. Halt dich fest.' });
-  b.push({ t: 'Caro zieht weiter. Nach Zürich!', shock: true });
-  b.push({ t: 'Ja, in die Schweiz. Für die Doktorarbeit. Neue Stadt, neues Leben, neue Preise.' });
-  b.push({ t: 'Weißt du, was ein Bier in Zürich kostet? Ich hab nachgerechnet und mich kurz hingesetzt. Da zahlst du für eins, was bei mir ein ganzer Kranz kostet.' });
-  b.push({ t: 'Deshalb ist das ihr letzter Geburtstag in Köln. Sie wird 27 und will ihn mit dir feiern. Danach heißt es nicht mehr Prost, sondern Grüezi.' });
-  b.push({ t: 'Samstag, 5. Dezember, 20 Uhr. Bring gute Laune und Durst. Ich bring das Kölsch und meine Laune. Die ist konstant.', info: true });
+  b.push({ t: 'Na, du! Ich bin der Köbes und erzähl dir kurz, worum es geht.' });
+  PHOTOS.forEach((p) => b.push({ t: p.caption, photo: p.src }));
+  b.push({ t: 'Gefeiert wird in der Wohngemeinschaft. Dort hat Caro schon ihren ersten Geburtstag in Köln gefeiert.' });
+  b.push({ t: 'Und jetzt halt dich fest. Ich stell mein Tablett ab.' });
+  b.push({ t: 'Caro zieht nach Zürich!', shock: true });
+  b.push({ t: 'Für die Doktorarbeit. Neue Stadt, neues Leben, neue Preise. Schon ein Kaffee kostet dort so viel wie bei mir ein ganzer Kranz.' });
+  b.push({ t: 'Darum ist es ihr letzter Geburtstag in Köln. Sie freut sich, den Abend mit euch gebührend zu feiern.' });
+  b.push({ t: 'Sag mir bitte gleich Bescheid, dann weiß ich, wie viele Gläser ich brauche.', info: true, cta: true });
   return b;
 }
 
@@ -122,8 +117,10 @@ function renderBeat() {
   stage.classList.remove('shock');
   if (beat.shock) { void stage.offsetWidth; stage.classList.add('shock'); }
   $('#infocard').hidden = !beat.info;
+  $('#steps').hidden = !beat.cta;
+  $('#next').classList.toggle('btn-cta', !!beat.cta);
   const last = beatIndex === beats.length - 1;
-  $('#next').textContent = last ? 'Ich sag Bescheid' : 'Weiter';
+  $('#next').textContent = last ? 'Jetzt zusagen und zapfen' : 'Weiter';
   typeText(el, beat.t);
 }
 
@@ -204,7 +201,7 @@ function showRules() {
   show('rules');
   const el = $('#rules-text');
   const firstName = current.name.split(' ')[0];
-  typeText(el, `Eingetragen, ${firstName}. Aber so einfach kommst du hier nicht rein. Wer zu Carolins Party will, muss zapfen können. Am Samstag verkündet Caro, wer am besten war.`);
+  typeText(el, `Eingetragen, ${firstName}. Jetzt kommt der Teil, auf den ich mich am meisten freue: das Zapf-Turnier. Sechs Kölsch, das beste Ergebnis gewinnt. Caro verkündet den Sieger am Samstag.`);
 }
 $('#rules-go').addEventListener('click', () => {
   if (typing) { /* Text überspringen */ }
@@ -426,7 +423,7 @@ function finish() {
   if (hasScore) $('#score-big').textContent = s.score;
   let msg;
   if (s.status === 'no') msg = `Schade, ${first}. Ich schenk dir in Gedanken eins ein. Caro hat deine Absage.`;
-  else if (!hasScore) msg = `Du bist eingetragen, ${first}.`;
+  else if (!hasScore) msg = `Du bist eingetragen, ${first}. Aber du hast noch nicht gezapft. Ohne Wertung kommst du am Samstag nicht in die Rangliste.`;
   else if (s.score >= 500) msg = 'Das war kein Zapfen, das war Handwerk. Ich überleg, ob ich dich einstelle. Am Samstag sehen wir, ob jemand besser war.';
   else if (s.score >= 400) msg = 'Ordentlich. Mit dir kann man arbeiten. Am Samstag verkündet Caro, wer vorne liegt.';
   else if (s.score >= 300) msg = 'Geht so. Du trinkst besser, als du zapfst. Am Samstag verkündet Caro, wer vorne liegt.';
@@ -438,7 +435,10 @@ function finish() {
   $('#done-answer').textContent = ans;
   $('#done-card').hidden = s.status === 'no';
   $('#ics').hidden = s.status === 'no';
+  $('#play').hidden = !(s.status !== 'no' && !hasScore);
 }
+
+$('#play').addEventListener('click', () => { if (current) showRules(); });
 
 $('#again').addEventListener('click', () => {
   localStorage.removeItem(KEY);

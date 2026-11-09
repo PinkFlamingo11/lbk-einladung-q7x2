@@ -182,6 +182,16 @@ body {
 .btn-quiet:active { transform: none; box-shadow: none; }
 .btn[disabled] { opacity: .5; }
 #next { margin-top: auto; }
+.btn-cta { background: var(--gold); color: var(--ink); font-size: 21px; padding: 20px 18px; }
+.btn-cta:active { background: #f3a91f; }
+#next.btn-cta { position: sticky; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 5; }
+
+.steps { list-style: none; padding: 0; display: grid; gap: 10px; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; border: 2px solid var(--ink); border-radius: 18px; background: var(--paper); padding: 12px 16px 12px 62px; box-shadow: 4px 4px 0 var(--butter); }
+.steps li::before { content: counter(s); position: absolute; left: 14px; top: 50%; margin-top: -19px; width: 38px; height: 38px; border-radius: 50%; background: var(--rose); color: #fff; border: 2px solid var(--ink); font-family: var(--display); font-weight: 600; font-size: 20px; display: grid; place-items: center; }
+.steps b { display: block; font-family: var(--display); font-weight: 600; font-size: 18px; }
+.steps span { font-size: 15px; font-weight: 600; opacity: .85; }
+.callout { border: 2px dashed var(--rose); border-radius: 16px; background: var(--paper); padding: 12px 16px; font-weight: 700; font-size: 16px; }
 
 /* Formular */
 #form { display: grid; gap: 22px; }

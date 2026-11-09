@@ -7,6 +7,6 @@ window.LBK_CONFIG = {
 
   // Kinderfotos. Dateien in den Ordner assets/ legen. Fehlende Dateien werden einfach übersprungen.
   PHOTOS: [
-    { src: 'assets/kind-1.jpg', caption: 'Hier. Die kleine Caro mit einem Luftballon. Schon damals: erst tief Luft holen, dann durchziehen.' }
+    { src: 'assets/kind-1.jpg', caption: 'Das hier ist die kleine Caro. Inzwischen wird sie 27.' }
   ]
 };

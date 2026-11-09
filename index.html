@@ -111,7 +111,7 @@
   <!-- INTRO -->
   <section id="s-intro" class="screen" hidden>
     <h1 class="title">Last Birthday in <em>Köln</em></h1>
-    <p class="lede">Caro lädt herzlich zum letzten Geburtstag in Köln ein. &#9825; Der Köbes erklärt dir, warum.</p>
+    <p class="lede">Caro lädt herzlich zum letzten Geburtstag in Köln ein. &#9825; Der Köbes erzählt dir mehr. Danach wartet ein kleines Kölsch-Turnier: Wer am besten zapft, wird am Abend gekürt.</p>
     <button class="btn btn-main" data-go="story">Komm rein</button>
   </section>
 
@@ -125,6 +125,10 @@
         <div><dt>Wo</dt><dd>die wohngemeinschaft<br>Richard-Wagner-Str. 39, 50674 Köln<br>Podest im Wohnzimmer</dd></div>
       </dl>
     </div>
+    <ol class="steps" id="steps" hidden>
+      <li><b>Zu- oder absagen</b><span>Kurz Bescheid geben, damit Caro planen kann.</span></li>
+      <li><b>Sechs Kölsch zapfen</b><span>Die beste Punktzahl gewinnt. Caro verkündet den Sieger am Abend.</span></li>
+    </ol>
     <button class="btn btn-main" id="next">Weiter</button>
   </section>
 
@@ -168,8 +172,9 @@
         <textarea id="f-note" rows="2" maxlength="400" placeholder="Eine Zeile reicht"></textarea>
       </label>
 
+      <p class="callout">Danach wartet das Zapf-Turnier: sechs Kölsch, die beste Punktzahl wird am Samstag gekürt.</p>
       <p class="error" id="form-error" hidden></p>
-      <button class="btn btn-main" type="submit" id="form-submit">Abschicken</button>
+      <button class="btn btn-main btn-cta" type="submit" id="form-submit">Abschicken und zapfen</button>
     </form>
   </section>
 
@@ -235,6 +240,7 @@
         <div><dt>Deine Antwort</dt><dd id="done-answer"></dd></div>
       </dl>
     </div>
+    <button class="btn btn-main btn-cta" id="play" hidden>Jetzt zapfen</button>
     <button class="btn btn-main" id="ics">In den Kalender</button>
     <button class="btn btn-quiet" id="again">Antwort ändern</button>
   </section>
