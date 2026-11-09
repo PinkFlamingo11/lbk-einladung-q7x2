@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F3EAD7">
+<title>Last Birthday in Köln</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <span>Last Birthday in Köln</span>
+  <span>05.12.2026</span>
+</header>
+
+<main id="app">
+
+  <!-- Bühne: Köbes oder Foto -->
+  <div id="stage" class="stage">
+    <div id="stage-kobes">
+      <svg id="kobes" viewBox="0 0 260 260" role="img" aria-label="Der Köbes">
+        <!-- linker Arm -->
+        <polygon fill="#2447A8" points="62,168 38,192 42,226 64,222 72,190"/>
+        <polygon fill="#E9B58F" points="40,224 66,220 64,236 42,240"/>
+        <!-- Torso -->
+        <polygon fill="#2447A8" points="55,260 62,168 110,150 150,150 198,168 205,260"/>
+        <polygon fill="#F3EAD7" points="112,150 130,178 148,150"/>
+        <polygon fill="#14234F" points="82,260 90,192 170,192 178,260"/>
+        <polygon fill="#14234F" points="104,192 112,172 148,172 156,192"/>
+        <line x1="104" y1="226" x2="156" y2="226" stroke="#F3EAD7" stroke-opacity=".35" stroke-width="1"/>
+        <!-- rechter Arm mit Kölsch-Kranz -->
+        <polygon fill="#2447A8" points="198,168 224,176 230,208 210,212 200,190"/>
+        <rect x="214" y="208" width="18" height="12" fill="#E9B58F"/>
+        <rect x="223" y="164" width="2" height="48" fill="#14234F"/>
+        <polygon fill="#B9B2A3" points="188,214 254,214 250,222 192,222"/>
+        <g>
+          <rect x="192" y="186" width="9" height="28" fill="#E3A21A"/><rect x="192" y="182" width="9" height="5" fill="#FBF5E6"/>
+          <rect x="203" y="186" width="9" height="28" fill="#E3A21A"/><rect x="203" y="182" width="9" height="5" fill="#FBF5E6"/>
+          <rect x="213" y="186" width="9" height="28" fill="#E3A21A"/><rect x="213" y="182" width="9" height="5" fill="#FBF5E6"/>
+          <rect x="226" y="186" width="9" height="28" fill="#E3A21A"/><rect x="226" y="182" width="9" height="5" fill="#FBF5E6"/>
+          <rect x="237" y="186" width="9" height="28" fill="#E3A21A"/><rect x="237" y="182" width="9" height="5" fill="#FBF5E6"/>
+        </g>
+        <!-- Hals, Ohren, Kopf -->
+        <rect fill="#D99E78" x="116" y="128" width="28" height="26"/>
+        <polygon fill="#D99E78" points="87,88 77,100 88,114"/>
+        <polygon fill="#D99E78" points="173,88 183,100 172,114"/>
+        <polygon fill="#E9B58F" points="92,62 168,62 176,98 158,146 102,146 84,98"/>
+        <polygon fill="#8C8A86" points="90,68 130,38 170,68 166,78 150,70 130,62 110,70 94,78"/>
+        <polygon fill="#5B5854" points="100,86 123,90 123,96 100,93"/>
+        <polygon fill="#5B5854" points="160,86 137,90 137,96 160,93"/>
+        <rect class="eye" x="107" y="99" width="9" height="5" fill="#1A1713"/>
+        <rect class="eye" x="144" y="99" width="9" height="5" fill="#1A1713"/>
+        <polygon fill="#D99E78" points="130,100 139,121 121,121"/>
+        <rect class="mouth" x="119" y="138" width="22" height="6" fill="#7A2E2A"/>
+        <polygon fill="#6E6B66" points="98,128 130,118 162,128 150,138 130,130 110,138"/>
+      </svg>
+    </div>
+    <figure id="stage-photo" class="photo" hidden>
+      <img id="photo-img" alt="">
+    </figure>
+  </div>
+
+  <!-- INTRO -->
+  <section id="s-intro" class="screen" hidden>
+    <h1 class="title">Last Birthday<br>in Köln</h1>
+    <p class="lede">Carolin wird 27. Danach geht es nach Zürich. Der Köbes erklärt dir den Rest.</p>
+    <button class="btn btn-main" data-go="story">Eintreten</button>
+  </section>
+
+  <!-- STORY -->
+  <section id="s-story" class="screen" hidden>
+    <div class="progress"><i id="progress"></i></div>
+    <div class="bubble" id="bubble"><p id="bubble-text"></p></div>
+    <div id="infocard" class="infocard" hidden>
+      <dl>
+        <div><dt>Wann</dt><dd>Samstag, 5. Dezember 2026, 20 Uhr</dd></div>
+        <div><dt>Wo</dt><dd>die wohngemeinschaft<br>Richard-Wagner-Str. 39, 50674 Köln<br>Podest im Wohnzimmer</dd></div>
+      </dl>
+    </div>
+    <button class="btn btn-main" id="next">Weiter</button>
+  </section>
+
+  <!-- FORMULAR -->
+  <section id="s-form" class="screen" hidden>
+    <div class="bubble"><p>Und? Kommst du? Dann sag mir kurz Bescheid. Ich muss wissen, wie viele Gläser ich spülen muss.</p></div>
+    <form id="form" autocomplete="off" novalidate>
+      <label class="field">
+        <span class="lab">Dein Name</span>
+        <input type="text" id="f-name" maxlength="60" placeholder="Vor- und Nachname" required>
+      </label>
+
+      <fieldset class="field">
+        <legend class="lab">Kommst du?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="status" value="yes" checked><span>Ich komme</span></label>
+          <label class="choice"><input type="radio" name="status" value="maybe"><span>Vielleicht</span></label>
+          <label class="choice"><input type="radio" name="status" value="no"><span>Ich kann nicht</span></label>
+        </div>
+      </fieldset>
+
+      <div id="form-more">
+        <div class="field">
+          <span class="lab">Mit wie vielen kommst du?</span>
+          <div class="stepper">
+            <button type="button" id="g-minus" aria-label="Weniger">−</button>
+            <output id="g-out">1</output>
+            <button type="button" id="g-plus" aria-label="Mehr">+</button>
+            <small id="g-hint">nur du</small>
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend class="lab">Wann kommst du ungefähr?</legend>
+          <div class="choices stack" id="arrival"></div>
+        </fieldset>
+      </div>
+
+      <label class="field">
+        <span class="lab">Nachricht an Caro <em>(optional)</em></span>
+        <textarea id="f-note" rows="2" maxlength="400" placeholder="Eine Zeile reicht"></textarea>
+      </label>
+
+      <p class="error" id="form-error" hidden></p>
+      <button class="btn btn-main" type="submit" id="form-submit">Abschicken</button>
+    </form>
+  </section>
+
+  <!-- SPIEL-REGELN -->
+  <section id="s-rules" class="screen" hidden>
+    <div class="bubble"><p id="rules-text"></p></div>
+    <ul class="rules">
+      <li>Erst ein Übungsglas ohne Wertung, dann sechs Gläser mit Wertung.</li>
+      <li>Knopf gedrückt halten, es zapft. Loslassen, wenn das Kölsch am Eichstrich ist.</li>
+      <li>Es läuft mal schneller und mal langsamer. Ab dem vierten Glas wird es schwerer.</li>
+      <li>Läuft es über, gibt es null Punkte. Pro Glas sind 100 Punkte möglich.</li>
+    </ul>
+    <button class="btn btn-main" id="rules-go">Los, Zapfhahn auf</button>
+  </section>
+
+  <!-- SPIEL -->
+  <section id="s-game" class="screen game" hidden>
+    <div class="game-head">
+      <span id="g-label">Übungsglas</span>
+      <span id="g-total">0 Punkte</span>
+    </div>
+    <div class="glass-wrap" id="glass-wrap">
+      <svg id="glass" viewBox="-40 -40 240 390" aria-hidden="true">
+        <defs><clipPath id="gclip"><polygon points="42,10 118,10 110,330 50,330"/></clipPath></defs>
+        <!-- Zapfhahn -->
+        <polygon points="64,-40 96,-40 96,-22 86,-22 86,-14 74,-14 74,-22 64,-22" fill="#14234F"/>
+        <rect id="stream" x="76" y="-14" width="8" height="0" fill="#E3A21A"/>
+        <g clip-path="url(#gclip)">
+          <rect x="0" y="10" width="160" height="320" fill="#FFFFFF" fill-opacity=".4"/>
+          <rect id="liq" x="0" y="330" width="160" height="0" fill="#E3A21A"/>
+          <rect id="foam" x="0" y="330" width="160" height="0" fill="#FFFFFF"/>
+        </g>
+        <polygon points="42,10 118,10 110,330 50,330" fill="none" stroke="#1A1713" stroke-width="3" stroke-linejoin="miter"/>
+        <g id="mark">
+          <line id="mark-line" x1="-38" x2="132" y1="0" y2="0" stroke="#C4161C" stroke-width="3"/>
+          <text id="mark-text" x="-38" y="-6" font-size="11" fill="#C4161C" font-family="Work Sans, sans-serif" font-weight="600">Eichstrich</text>
+        </g>
+        <line id="hit" x1="36" x2="124" y1="0" y2="0" stroke="#1A1713" stroke-width="2" stroke-dasharray="4 3" opacity="0"/>
+      </svg>
+    </div>
+    <p class="game-note" id="game-note"></p>
+    <div class="result" id="result" hidden>
+      <strong id="res-points">+0</strong>
+      <p id="res-text"></p>
+      <button class="btn btn-main" id="res-next">Nächstes Glas</button>
+    </div>
+    <button class="btn btn-pour" id="pour" aria-label="Zapfen: gedrückt halten">Gedrückt halten zum Zapfen</button>
+  </section>
+
+  <!-- FERTIG -->
+  <section id="s-done" class="screen" hidden>
+    <div class="scorebox" id="scorebox" hidden>
+      <span class="lab">Dein Wert</span>
+      <strong id="score-big">0</strong>
+      <span class="of">von 600</span>
+    </div>
+    <div class="bubble"><p id="done-text"></p></div>
+    <div id="done-card" class="infocard">
+      <dl>
+        <div><dt>Wann</dt><dd>Samstag, 5. Dezember 2026, 20 Uhr</dd></div>
+        <div><dt>Wo</dt><dd>die wohngemeinschaft<br>Richard-Wagner-Str. 39, 50674 Köln<br>Podest im Wohnzimmer</dd></div>
+        <div><dt>Deine Antwort</dt><dd id="done-answer"></dd></div>
+      </dl>
+    </div>
+    <button class="btn btn-main" id="ics">In den Kalender</button>
+    <button class="btn btn-quiet" id="again">Antwort ändern</button>
+  </section>
+
+</main>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

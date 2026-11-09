@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Übersicht</title>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { align-items: stretch; }
+  .wrap { width: 100%; max-width: 980px; margin: 0 auto; padding: 18px 20px 60px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: 34px; margin-bottom: 4px; }
+  h2 { font-size: 15px; font-weight: 600; margin: 34px 0 10px; border-bottom: 1.5px solid var(--ink); padding-bottom: 6px; }
+  .sub { opacity: .7; }
+  .login { max-width: 360px; display: grid; gap: 12px; margin-top: 24px; }
+  .sums { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); margin-top: 22px; }
+  .sums div { padding: 14px 12px; border-left: 1px solid var(--line); }
+  .sums div:first-child { border-left: 0; padding-left: 0; }
+  .sums strong { display: block; font-family: var(--display); font-weight: 400; font-size: 38px; line-height: 1.1; }
+  .sums span { font-size: 13px; opacity: .75; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; font-size: 13px; padding: 8px 8px 8px 0; border-bottom: 1.5px solid var(--ink); }
+  td { padding: 9px 8px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.num, th.num { text-align: right; }
+  .tag-yes { font-weight: 600; }
+  .tag-maybe { opacity: .7; }
+  .tag-no { opacity: .5; text-decoration: line-through; }
+  .bars { display: grid; gap: 8px; }
+  .bar { display: grid; grid-template-columns: 150px 1fr 120px; gap: 10px; align-items: center; font-size: 14px; }
+  .track { position: relative; height: 22px; background: rgba(26,23,19,.06); }
+  .fill-yes { position: absolute; left: 0; top: 0; bottom: 0; background: var(--ink); }
+  .fill-maybe { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(45deg, var(--gold) 0 5px, var(--cream) 5px 9px); }
+  .cap { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--red); }
+  .legend { font-size: 13px; opacity: .75; margin-top: 8px; }
+  .rank { display: grid; grid-template-columns: 36px 1fr auto; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .rank:first-child { border-top: 0; font-weight: 600; font-size: 18px; }
+  .rank small { opacity: .65; }
+  .demo { border: 1.5px solid var(--red); color: var(--red); padding: 10px 12px; margin-top: 14px; font-size: 14px; }
+  .row-actions { display: flex; gap: 10px; margin-top: 14px; }
+  .row-actions .btn { width: auto; padding: 10px 14px; font-size: 14px; }
+  @media (max-width: 640px) {
+    .sums { grid-template-columns: repeat(2, 1fr); }
+    .sums div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .bar { grid-template-columns: 110px 1fr 90px; }
+    .hide-s { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Last Birthday in Köln</h1>
+  <p class="sub">Übersicht für Caro. Nur mit Login sichtbar.</p>
+
+  <form id="login" class="login" hidden>
+    <label class="field"><span class="lab">E-Mail</span><input type="text" id="l-mail" value="car.freude@gmail.com" autocomplete="username"></label>
+    <label class="field"><span class="lab">Passwort</span><input type="password" id="l-pass" autocomplete="current-password" style="width:100%;font:inherit;padding:13px 14px;border:1.5px solid var(--ink);background:var(--paper);border-radius:0"></label>
+    <p class="error" id="l-err" hidden></p>
+    <button class="btn btn-main" type="submit">Einloggen</button>
+  </form>
+
+  <div id="board" hidden>
+    <div id="demo-note" class="demo" hidden>Testmodus: Hier siehst du nur Antworten, die in diesem Browser abgegeben wurden.</div>
+    <div class="sums" id="sums"></div>
+
+    <h2>Wer kommt wann</h2>
+    <div class="bars" id="bars"></div>
+    <p class="legend">Schwarz = Zusagen, gestreift = Vielleicht. Die rote Linie sind 20 Plätze auf dem Podest. Zahlen sind Personen, kumuliert nach Ankunft.</p>
+
+    <h2>Zapf-Wertung</h2>
+    <div id="rank"></div>
+    <p class="legend">Es zählt der erste gewertete Versuch pro Name.</p>
+
+    <h2>Alle Antworten</h2>
+    <div style="overflow-x:auto"><table id="tbl"></table></div>
+    <div class="row-actions">
+      <button class="btn" id="csv">Als CSV laden</button>
+      <button class="btn" id="reload">Neu laden</button>
+      <button class="btn btn-quiet" id="logout">Ausloggen</button>
+    </div>
+  </div>
+</div>
+<script src="../config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+:root {
+  --cream: #F3EAD7;
+  --paper: #FBF5E6;
+  --ink: #1A1713;
+  --gold: #E3A21A;
+  --red: #C4161C;
+  --blue: #2447A8;
+  --navy: #14234F;
+  --line: rgba(26, 23, 19, .28);
+  --display: 'Alfa Slab One', Georgia, 'Times New Roman', serif;
+  --body: 'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.45;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+[hidden] { display: none !important; }
+
+.top {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+  letter-spacing: .01em;
+}
+
+#app {
+  width: 100%;
+  max-width: 520px;
+  padding: 0 20px calc(28px + env(safe-area-inset-bottom));
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bühne */
+.stage {
+  height: 250px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 8px;
+  position: relative;
+}
+.stage.compact { height: 130px; }
+#stage-kobes svg { height: 100%; width: auto; max-height: 250px; display: block; }
+.stage.compact #stage-kobes svg { height: 130px; }
+#stage-kobes { height: 100%; display: flex; align-items: flex-end; }
+.stage.compact #stage-kobes { height: 130px; }
+
+.photo {
+  background: var(--paper);
+  padding: 10px 10px 34px;
+  border: 1px solid var(--line);
+  transform: rotate(-2deg);
+  max-height: 100%;
+  display: flex;
+  align-self: center;
+}
+.photo img { display: block; max-height: 190px; max-width: 280px; width: auto; height: auto; object-fit: cover; }
+
+.mouth { transform-origin: 130px 141px; }
+.talking .mouth { animation: talk .22s steps(1) infinite; }
+@keyframes talk { 0% { transform: scaleY(1); } 50% { transform: scaleY(2.2); } }
+.eye { animation: blink 5s infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+
+/* Typo */
+.title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(44px, 14vw, 68px);
+  line-height: 1.02;
+  margin: 22px 0 14px;
+  color: var(--ink);
+}
+.lede { font-size: 19px; max-width: 30ch; margin-bottom: 24px; }
+.lab { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+.lab em { font-weight: 400; font-style: normal; opacity: .65; }
+
+.screen { display: flex; flex-direction: column; gap: 16px; padding-top: 14px; flex: 1; }
+
+/* Sprechblase */
+.bubble {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 18px 18px 18px;
+  position: relative;
+  min-height: 112px;
+  margin-top: 8px;
+}
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 56%;
+  width: 18px;
+  height: 18px;
+  background: var(--paper);
+  border-left: 1.5px solid var(--ink);
+  border-top: 1.5px solid var(--ink);
+  transform: rotate(45deg);
+}
+.bubble p { font-size: 19px; line-height: 1.42; }
+
+.progress { height: 3px; background: var(--line); }
+.progress i { display: block; height: 100%; width: 0; background: var(--red); transition: width .3s ease; }
+
+/* Infokarte */
+.infocard { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.infocard dl > div { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 12px 0; }
+.infocard dl > div + div { border-top: 1px solid var(--line); }
+.infocard dt { font-size: 13px; font-weight: 600; opacity: .7; padding-top: 2px; }
+.infocard dd { font-weight: 500; }
+
+/* Buttons */
+.btn {
+  appearance: none;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  padding: 15px 18px;
+  cursor: pointer;
+  border-radius: 0;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-main { background: var(--ink); color: var(--cream); }
+.btn-main:active { background: var(--red); border-color: var(--red); }
+.btn-quiet { border-color: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.btn[disabled] { opacity: .5; }
+#next { margin-top: auto; }
+
+/* Formular */
+#form { display: grid; gap: 22px; }
+#form-more { display: grid; gap: 22px; }
+.field { border: 0; padding: 0; min-width: 0; }
+input[type=text], textarea {
+  width: 100%;
+  font: inherit;
+  padding: 13px 14px;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  border-radius: 0;
+  color: var(--ink);
+}
+input[type=text]:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 0; }
+textarea { resize: vertical; }
+
+.choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.choices.stack { grid-template-columns: 1fr; }
+.choice { position: relative; display: block; }
+.choice input { position: absolute; opacity: 0; inset: 0; }
+.choice span {
+  display: block;
+  padding: 13px 12px;
+  border: 1.5px solid var(--ink);
+  margin: 0 -1.5px -1.5px 0;
+  background: var(--paper);
+  font-weight: 500;
+  font-size: 16px;
+}
+.choice input:checked + span { background: var(--ink); color: var(--cream); }
+.choice input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+.stack .choice span { margin: 0 0 -1.5px 0; }
+
+.stepper { display: flex; align-items: center; gap: 0; }
+.stepper button {
+  width: 48px; height: 48px;
+  border: 1.5px solid var(--ink); background: var(--paper);
+  font: inherit; font-size: 22px; cursor: pointer; border-radius: 0;
+}
+.stepper output {
+  width: 56px; height: 48px;
+  display: grid; place-items: center;
+  border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink);
+  font-weight: 600; font-size: 19px;
+}
+.stepper small { margin-left: 14px; opacity: .7; }
+
+.error { color: var(--red); font-weight: 600; }
+
+/* Regeln */
+.rules { list-style: none; padding: 0; border-top: 1.5px solid var(--ink); }
+.rules li { padding: 11px 0 11px 20px; border-bottom: 1px solid var(--line); position: relative; font-size: 16px; }
+.rules li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); }
+
+/* Spiel */
+.game { gap: 6px; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
+.game-head { display: flex; justify-content: space-between; font-weight: 600; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.glass-wrap { position: relative; display: flex; justify-content: center; flex: 1; min-height: 300px; }
+#glass { height: clamp(280px, calc(100dvh - 330px), 520px); width: auto; max-width: 100%; display: block; }
+.game-note { text-align: center; min-height: 22px; font-size: 15px; opacity: .85; }
+#result[hidden] + .btn-pour { display: inline-block; }
+.btn-pour {
+  background: var(--gold);
+  border-color: var(--ink);
+  padding: 26px 18px;
+  font-size: 19px;
+  touch-action: none;
+  user-select: none; -webkit-user-select: none;
+}
+.btn-pour.on { background: var(--red); color: var(--paper); border-color: var(--red); }
+.btn-pour[disabled] { opacity: .35; }
+
+.result {
+  display: grid; grid-template-columns: auto 1fr; column-gap: 16px; row-gap: 12px; align-items: center;
+  border-top: 1.5px solid var(--ink); padding-top: 12px;
+}
+.result .btn { grid-column: 1 / -1; }
+.result strong { font-family: var(--display); font-weight: 400; font-size: 52px; line-height: 1; }
+.result strong.zero { color: var(--red); }
+.result p { font-size: 17px; }
+
+.spill #liq { fill: var(--red); }
+
+/* Ergebnis */
+.scorebox { border: 1.5px solid var(--ink); background: var(--paper); padding: 16px 18px; display: grid; grid-template-columns: 1fr auto; align-items: baseline; margin-top: 12px; }
+.scorebox .lab { grid-column: 1 / -1; margin-bottom: 0; }
+.scorebox strong { font-family: var(--display); font-weight: 400; font-size: 64px; line-height: 1.1; }
+.scorebox .of { opacity: .7; }
+
+@media (min-width: 560px) {
+  body { font-size: 18px; }
+}
